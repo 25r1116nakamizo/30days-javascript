@@ -45,17 +45,44 @@ const products = [
 // ヒント: mapを使う
 const priceIncreased = products.map(product => {
   // ここに実装
+  return {...product, price: product.price * 1.1 };
   // 新しいオブジェクトを返す必要があります
   // 例: { ...product, price: product.price * 1.1 }
 });
 
 console.log("=== 課題1: 10%値上げ ===");
 console.log(priceIncreased);
+// 1つのオブジェクト
+const apple = {
+  name: "りんご",
+  price: 100,
+  stock: 50
+};
 
+console.log("オブジェクト全体:", apple);
+console.log("名前:", apple.name);
+console.log("価格:", apple.price);
+// プロパティを追加
+apple.onSale = true;
+console.log("セール情報追加後:", apple);
+// 新しいオブジェクトを作成
+const expensiveApple = { ...apple, price: 150 };
+console.log("元のりんご:", apple);
+console.log("高いりんご:", expensiveApple);
+// 配列の中のオブジェクト
+const fruitExamples = [
+  { name: "りんご", price: 100 },
+  { name: "バナナ", price: 120 }
+];
+
+console.log("配列全体:", fruitExamples);
+console.log("1番目の果物:", fruitExamples[0]);
+console.log("1番目の果物の名前:", fruitExamples[0].name);
 // ===== 課題2: 100円以上の商品だけを抽出 =====
 // ヒント: filterを使う
 const expensiveProducts = products.filter(product => {
   // ここに実装
+   return product.price >= 100;
   // 条件を満たすかどうかを返す
 });
 
@@ -67,6 +94,7 @@ console.log(expensiveProducts);
 const totalPrice = products.reduce((sum, product) => {
   // ここに実装
   // 累積値に現在の商品価格を足す
+  return sum + product.price
 }, 0); // 初期値は0
 
 console.log("=== 課題3: 合計金額 ===");
@@ -76,10 +104,13 @@ console.log(`合計: ${totalPrice}円`);
 // ヒント: filterとreduceを組み合わせる
 const fruits = products.filter(product => {
   // ここに実装（果物だけ抽出）
+  return product.category === "果物"
 });
+ console.log(fruits)
 
 const fruitTotalPrice = fruits.reduce((sum, product) => {
   // ここに実装（果物の合計金額）
+  return sum + product.price
 }, 0);
 
 const averageFruitPrice = fruitTotalPrice / fruits.length;
@@ -94,7 +125,7 @@ const stockByCategory = products.reduce((acc, product) => {
   // ここに実装
   // accは累積値（オブジェクト）
   // product.categoryをキーとして、stockを加算していく
-  return acc;
+  return acc  ;
 }, {}); // 初期値は空のオブジェクト
 
 console.log("=== 課題5: カテゴリー別在庫 ===");
