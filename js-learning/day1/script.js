@@ -124,6 +124,7 @@ console.log(`果物の平均: ${averageFruitPrice}円`);
 const stockByCategory = products.reduce((acc, product) => {
   // ここに実装
   // accは累積値（オブジェクト）
+  acc[product.category] = product.stock;
   // product.categoryをキーとして、stockを加算していく
   return acc  ;
 }, {}); // 初期値は空のオブジェクト
