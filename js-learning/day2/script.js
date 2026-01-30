@@ -249,7 +249,7 @@ console.log("[10, 50, 30, 90, 20]の最大値:", findMax([10, 50, 30, 90, 20]));
 // ========================================
 
 // 商品データ
-const products = [
+const products3 = [
   { id: 1, name: "Tシャツ", price: 2000, category: "衣類", inStock: true },
   { id: 2, name: "ジーンズ", price: 8000, category: "衣類", inStock: false },
   { id: 3, name: "マグカップ", price: 1500, category: "雑貨", inStock: true },
@@ -259,16 +259,35 @@ const products = [
 
 // ===== ボーナス課題: 在庫ありの商品の税込み価格リストを作成 =====
 // 1. inStockがtrueの商品だけ抽出
+const haveinStock = products3.filter(product =>{
+  return product.inStock
+}
+)
+  console.log(haveinStock)
+
 // 2. 各商品の価格を1.1倍（税込み）にする
+const taxIncludedPrice = haveinStock.map(product =>{
+  return {                  // ステップ2: オブジェクトを返す
+      name: product.name,
+      taxIncludedPrice: product.price * 1.1
+  }
+}
+)
+console.log(taxIncludedPrice)
 // 3. { name, taxIncludedPrice }の形式で返す
 
-const availableProductsWithTax = products
+const availableProductsWithTax = products3
   .filter(product => {
     // ここに実装
+    return product.inStock;
+
   })
   .map(product => {
     // ここに実装
+    return
+    name:product.name
+    taxIncludedPrice:product.price * 1.1
   });
 
-console.log("=== ボーナス課題: 在庫あり商品（税込み） ===");
-console.log(availableProductsWithTax);
+//console.log("=== ボーナス課題: 在庫あり商品（税込み） ===");
+//console.log(availableProductsWithTax);
